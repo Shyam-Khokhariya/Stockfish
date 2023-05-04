@@ -352,7 +352,7 @@ inline Score Position::psq_score() const {
 }
 
 inline Value Position::psq_eg_stm() const {
-  return (sideToMove == WHITE ? 1 : -1) * eg_value(psq);
+  return (sideToMove == WHITE ? 1 : -1) * eg_value_inverse(psq);
 }
 
 inline Value Position::non_pawn_material(Color c) const {

@@ -358,7 +358,7 @@ Score operator*(Score, Score) = delete;
 
 /// Division of a Score must be handled separately for each term
 inline Score operator/(Score s, int i) {
-  return make_score(mg_value(s) / i, eg_value(s) / i);
+  return make_score(mg_value_inverse(s) / i, eg_value_inverse(s) / i);
 }
 
 /// Multiplication of a Score by an integer. We check for overflow in debug mode.
@@ -366,8 +366,8 @@ inline Score operator*(Score s, int i) {
 
   Score result = Score(int(s) * i);
 
-  assert(eg_value(result) == (i * eg_value(s)));
-  assert(mg_value(result) == (i * mg_value(s)));
+  assert(eg_value_inverse(result) == (i * eg_value_inverse(s)));
+  assert(mg_value_inverse(result) == (i * mg_value_inverse(s)));
   assert((i == 0) || (result / i) == s);
 
   return result;
